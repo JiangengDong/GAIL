@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="Lab317">
+    <serverData>
+      <paths name="Lab317">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/gail_dev" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
