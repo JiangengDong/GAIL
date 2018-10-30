@@ -1,15 +1,16 @@
 import numpy as np
+import gym
 
 
 class Generator:
-    def __init__(self, pi, env, reward_giver, n_step):
+    def __init__(self, pi, env: gym.Env, reward_giver, n_step):
         self.pi = pi    # policy
         self.env = env  # environment for simulation
         self.reward_giver = reward_giver
         self.n_step = n_step
         pass
 
-    def sample_trajectory(self, stochastic=True):
+    def sample_trajectory(self, stochastic=True, display=False):
         # Initialize state variables
         t = 0
         ac = self.env.action_space.sample()
@@ -47,12 +48,21 @@ class Generator:
             acs[i] = ac
             vpreds[i] = vpred
             # evaluate values and record
-            reward = self.reward_giver.get_reward(ob, ac)
+            if self.reward_giver is not None:
+                reward = self.reward_giver.get_reward(ob, ac)
+            else:
+                reward = 0
             rewards[i] = reward
             # take action and record true reward
             ob, true_reward, new, _ = self.env.step(ac)
+            if display:
+                self.env.render()
             true_rewards[i] = true_reward
+            if new:
+                ob = self.env.reset()
 
+        if display:
+            self.env.close()
         return {"ob": obs,
                 "reward": rewards,
                 "vpred": vpreds,

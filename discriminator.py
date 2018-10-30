@@ -31,14 +31,14 @@ class Discriminator:
         with tf.variable_scope("main_net", reuse=False):
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
-            generator_logits = tf.layers.dense(inputs=net, units=hid_size, activation=tf.identity)
+            generator_logits = tf.layers.dense(inputs=net, units=1, activation=tf.identity)
         # network to judge expert
         net = (self.expert_obs-self.obs_rms.mean)/self.obs_rms.std
         net = tf.concat([net, self.expert_acs], axis=1)
         with tf.variable_scope("main_net", reuse=True):
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
-            expert_logits = tf.layers.dense(inputs=net, units=hid_size, activation=tf.identity)
+            expert_logits = tf.layers.dense(inputs=net, units=1, activation=tf.identity)
 
         # Build accuracy
         generator_acc = tf.reduce_mean(tf.to_float(tf.nn.sigmoid(generator_logits) < 0.5))

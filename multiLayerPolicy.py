@@ -37,7 +37,7 @@ class MultiLayerPolicy:
         # train value function
         self.vreal = tf.placeholder(dtype=tf.float32, shape=(None,), name="vreal")
         vloss = tf.reduce_mean(tf.square(self.vreal-self.vpred))
-        valueFunctionVars = [v for v in self.get_trainable_variables() if v.name.startswith("pi/vff")]
+        valueFunctionVars = [v for v in self.get_trainable_variables() if v.name.startswith("%s/vff" % self.scope)]
         self.vadam = tf.train.AdamOptimizer().minimize(vloss, var_list=valueFunctionVars)
 
         # net to predict mean and standard deviation of action
