@@ -52,9 +52,9 @@ def main():
     demo = Generator(pol, env, None, 2000)
     traj = demo.sample_trajectory(display=True)
     traj = demo.process_trajectory(traj, 0.995, 0.97)
-    plt.plot(traj["adv"])
-    plt.plot(traj["vpred"])
-    plt.show()
+    # plt.plot(traj["adv"])
+    # plt.plot(traj["vpred"])
+    # plt.show()
     pass
 
 

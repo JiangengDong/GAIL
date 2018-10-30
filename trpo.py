@@ -223,6 +223,13 @@ class TRPO:
                                 self.d.obs_rms.update(np.concatenate((traj_e["ob"], traj_g["ob"]), 0))
                                 self.d.train(traj_g["ob"], traj_g["ac"], traj_e["ob"], traj_e["ac"])
 
+    def test(self):
+        with tf.Session() as sess:
+            saver = tf.train.Saver()
+            saver.restore(sess, "./log/gail")
+            generator = Generator(self.pi, self.env, self.d, 1000)
+            generator.sample_trajectory(display=True)
+
 
 if __name__ == '__main__':
     env = env_wrapper(gym.make("Reacher-v2"))

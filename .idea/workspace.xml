@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6b1aa96-facf-4931-90c0-fbc6b33d4e42" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/pid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/discriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/discriminator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multiLayerPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/multiLayerPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/pid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/trpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,7 +18,7 @@
     <SUITE FILE_PATH="coverage/project$PG.coverage" NAME="PG Coverage Results" MODIFIED="1520347625291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$run_MountainCar.coverage" NAME="run_MountainCar Coverage Results" MODIFIED="1520219834222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$discriminator.coverage" NAME="discriminator Coverage Results" MODIFIED="1540209509252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$trpo.coverage" NAME="trpo Coverage Results" MODIFIED="1540868414604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$trpo.coverage" NAME="trpo Coverage Results" MODIFIED="1540868541435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$ani.coverage" NAME="ani Coverage Results" MODIFIED="1520053005257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$Gene_env.coverage" NAME="Gene_env Coverage Results" MODIFIED="1526451047484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1531642909726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Program Files/Python36/Lib/site-packages/mpi4py" />
@@ -63,8 +56,8 @@
       <file leaf-file-name="pid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+            <state relative-caret-position="270">
+              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -87,8 +80,8 @@
       <file leaf-file-name="trpo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trpo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+            <state relative-caret-position="243">
+              <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -99,8 +92,8 @@
       <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="130" column="26" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
+            <state relative-caret-position="2340">
+              <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -186,10 +179,10 @@
         <option value="C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/mujoco_env.py" />
         <option value="$PROJECT_DIR$/discriminator.py" />
         <option value="$PROJECT_DIR$/generator.py" />
-        <option value="$PROJECT_DIR$/pid.py" />
         <option value="$PROJECT_DIR$/multiLayerPolicy.py" />
         <option value="$PROJECT_DIR$/fix_problem.py" />
         <option value="$PROJECT_DIR$/util.py" />
+        <option value="$PROJECT_DIR$/pid.py" />
         <option value="$PROJECT_DIR$/trpo.py" />
       </list>
     </option>
@@ -420,7 +413,21 @@
       <option name="project" value="LOCAL" />
       <updated>1540354017588</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finish the first version">
+      <created>1540868502974</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1540868502974</updated>
+    </task>
+    <task id="LOCAL-00003" summary="finish the first version">
+      <created>1540868863213</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1540868863213</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -434,12 +441,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50214595" side_tool="true" weight="0.3260234" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49785408" visible="true" weight="0.34846267" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329429" />
+      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32796487" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.34846267" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.329429" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32650074" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32650074" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.121313676" />
@@ -457,7 +466,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
-      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32796487" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32748538" />
     </layout>
     <layout-to-restore>
@@ -526,7 +534,8 @@
       <path value="$PROJECT_DIR$/baselines" />
     </ignored-roots>
     <MESSAGE value="the first version nearly finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="the first version nearly finished" />
+    <MESSAGE value="finish the first version" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish the first version" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -538,7 +547,7 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url />
+          <url>file://C:/Program Files/Python36/Lib/site-packages/mpi4py/run.py</url>
           <line>189</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
@@ -815,30 +824,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="130" column="26" selection-start-line="130" selection-start-column="26" selection-end-line="130" selection-end-column="26" />
+        <state relative-caret-position="2340">
+          <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/trpo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        <state relative-caret-position="243">
+          <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
