@@ -108,25 +108,25 @@ START_TIME = time()
 def logger(info):
     global RANK
     if RANK == 0:
-        print("%f: start %s" % (time() - START_TIME, info))
+        print("%.2f: start %s" % (time() - START_TIME, info))
     elif RANK == 1:
         print("=" * 16)
-        print("%f: start %s" % (time() - START_TIME, info))
+        print("%.2f: start %s" % (time() - START_TIME, info))
     elif RANK == 2:
         print("\t" + "-" * 12)
-        print("\t%f: start %s" % (time() - START_TIME, info))
+        print("\t%.2f: start %s" % (time() - START_TIME, info))
     else:
-        print("\t" * (RANK - 1) + "%f: start %s" % (time() - START_TIME, info))
+        print("\t" * (RANK - 1) + "%.2f: start %s" % (time() - START_TIME, info))
     RANK += 1
     yield
-    if RANK == 0:
-        print("%f: end %s" % (time() - START_TIME, info))
-    elif RANK == 1:
-        print("%f: end %s" % (time() - START_TIME, info))
-        print("=" * 16)
+    if RANK == 1:
+        print("%.2f: end %s" % (time() - START_TIME, info))
     elif RANK == 2:
-        print("%f: end %s" % (time() - START_TIME, info))
-        print("-" * 12)
+        print("%.2f: end %s" % (time() - START_TIME, info))
+        print("=" * 16)
+    elif RANK == 3:
+        print("\t%.2f: end %s" % (time() - START_TIME, info))
+        print("\t" + "-" * 12)
     else:
-        print("\t" * (RANK - 2) + "%f: end %s" % (time() - START_TIME, info))
+        print("\t" * (RANK - 2) + "%.2f: end %s" % (time() - START_TIME, info))
     RANK -= 1
