@@ -24,8 +24,20 @@ def env_wrapper(env):
         self.set_state(qpos, qvel)
         return self._get_obs()
 
+    def render(self, mode='human'):
+        if mode == 'rgb_array':
+            self._get_viewer().render()
+            # window size used for old mujoco-py:
+            width, height = 1920, 1080
+            data = self._get_viewer().read_pixels(width, height, depth=False)
+            # original image is upside-down, so flip it
+            return data[::-1, :, :]
+        elif mode == 'human':
+            self._get_viewer().render()
+
     env.unwrapped.close = MethodType(close, env.unwrapped)
     env.unwrapped.reset_model = MethodType(reset_model, env.unwrapped)
+    env.unwrapped.render = MethodType(render, env.unwrapped)
     return env
 
 

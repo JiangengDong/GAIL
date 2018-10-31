@@ -2,9 +2,107 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6b1aa96-facf-4931-90c0-fbc6b33d4e42" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/play_with_ur5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/discriminator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528202108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528968624.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528969765.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528969810.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528970124.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971178.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971672.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971714.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971753.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528975432.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528202107.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528968623.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528969764.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528969810.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528970124.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971178.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971671.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971714.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971753.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528975432.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/multiLayerPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/multiLayerPolicy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pid.py" beforeDir="false" afterPath="$PROJECT_DIR$/pid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/1.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/10.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/11.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/12.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/13.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/14.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/15.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/16.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/17.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/18.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/19.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/2.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/20.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/21.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/22.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/23.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/24.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/25.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/26.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/27.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/28.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/29.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/3.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/30.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/4.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/5.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/6.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/7.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/8.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/9.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_1.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_10.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_11.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_12.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_13.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_14.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_15.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_16.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_17.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_18.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_19.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_2.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_20.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_21.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_22.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_23.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_24.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_25.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_26.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_27.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_28.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_29.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_3.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_30.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_4.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_5.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_6.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_7.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_8.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_9.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/test.meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/record/test.meta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/test.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/record/test.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/trpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,50 +112,39 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/project$project.coverage" NAME="project Coverage Results" MODIFIED="1517544029527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/project$PG.coverage" NAME="PG Coverage Results" MODIFIED="1520347625291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_MountainCar.coverage" NAME="run_MountainCar Coverage Results" MODIFIED="1520219834222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$discriminator.coverage" NAME="discriminator Coverage Results" MODIFIED="1540209509252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$trpo.coverage" NAME="trpo Coverage Results" MODIFIED="1540868541435" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$ani.coverage" NAME="ani Coverage Results" MODIFIED="1520053005257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$Gene_env.coverage" NAME="Gene_env Coverage Results" MODIFIED="1526451047484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$__main__.coverage" NAME="__main__ Coverage Results" MODIFIED="1531642909726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Program Files/Python36/Lib/site-packages/mpi4py" />
-    <SUITE FILE_PATH="coverage/project$test.coverage" NAME="test Coverage Results" MODIFIED="1531657646420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$Demonstrator.coverage" NAME="Demonstrator Coverage Results" MODIFIED="1540192601235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$multiLayerPolicy.coverage" NAME="multiLayerPolicy Coverage Results" MODIFIED="1540213972958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$traditional_reacher.coverage" NAME="traditional_reacher Coverage Results" MODIFIED="1525344459148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$fix_problem.coverage" NAME="fix_problem Coverage Results" MODIFIED="1540864875958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_CartPole.coverage" NAME="run_CartPole Coverage Results" MODIFIED="1520334003133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$run_mujoco.coverage" NAME="run_mujoco Coverage Results" MODIFIED="1524050202157" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/reference/baselines/baselines/gail" />
     <SUITE FILE_PATH="coverage/project$GAIL.coverage" NAME="GAIL Coverage Results" MODIFIED="1528975424340" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$temp.coverage" NAME="temp Coverage Results" MODIFIED="1520150608198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$Demo_env.coverage" NAME="Demo_env Coverage Results" MODIFIED="1526451790076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$Generator.coverage" NAME="Generator Coverage Results" MODIFIED="1526526532516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$pid.coverage" NAME="pid Coverage Results" MODIFIED="1540782602302" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run_Reacher.coverage" NAME="run_Reacher Coverage Results" MODIFIED="1520841106509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/project$TraditionalReacher.coverage" NAME="TraditionalReacher Coverage Results" MODIFIED="1525344650984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/project$run.coverage" NAME="run Coverage Results" MODIFIED="1531643636844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Program Files/Python36/Lib/site-packages/mpi4py" />
     <SUITE FILE_PATH="coverage/project$main.coverage" NAME="main Coverage Results" MODIFIED="1528971746550" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$project.coverage" NAME="project Coverage Results" MODIFIED="1517544029527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/project$run_MountainCar.coverage" NAME="run_MountainCar Coverage Results" MODIFIED="1520219834222" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$trpo.coverage" NAME="trpo Coverage Results" MODIFIED="1540955426427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$ani.coverage" NAME="ani Coverage Results" MODIFIED="1520053005257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$Gene_env.coverage" NAME="Gene_env Coverage Results" MODIFIED="1526451047484" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$test.coverage" NAME="test Coverage Results" MODIFIED="1531657646420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$Demonstrator.coverage" NAME="Demonstrator Coverage Results" MODIFIED="1540192601235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$multiLayerPolicy.coverage" NAME="multiLayerPolicy Coverage Results" MODIFIED="1540213972958" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_CartPole.coverage" NAME="run_CartPole Coverage Results" MODIFIED="1520334003133" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$Demo_env.coverage" NAME="Demo_env Coverage Results" MODIFIED="1526451790076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$pid.coverage" NAME="pid Coverage Results" MODIFIED="1540888811505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run_Reacher.coverage" NAME="run_Reacher Coverage Results" MODIFIED="1520841106509" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/project$run.coverage" NAME="run Coverage Results" MODIFIED="1531643636844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/Program Files/Python36/Lib/site-packages/mpi4py" />
+    <SUITE FILE_PATH="coverage/project$play_with_ur5.coverage" NAME="play_with_ur5 Coverage Results" MODIFIED="1540911467725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="multiLayerPolicy.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/multiLayerPolicy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="pid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="42" />
+            <state relative-caret-position="828">
+              <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -68,8 +155,8 @@
       <file leaf-file-name="discriminator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/discriminator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="33" column="66" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
+            <state relative-caret-position="248">
+              <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -80,20 +167,8 @@
       <file leaf-file-name="trpo.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/trpo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2340">
-              <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
+            <state relative-caret-position="2124">
+              <caret line="235" column="26" lean-forward="true" selection-start-line="235" selection-start-column="26" selection-end-line="235" selection-end-column="26" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -177,12 +252,13 @@
         <option value="$PROJECT_DIR$/demonstrator.py" />
         <option value="$PROJECT_DIR$/history/Demonstrator.py" />
         <option value="C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/mujoco_env.py" />
-        <option value="$PROJECT_DIR$/discriminator.py" />
-        <option value="$PROJECT_DIR$/generator.py" />
-        <option value="$PROJECT_DIR$/multiLayerPolicy.py" />
         <option value="$PROJECT_DIR$/fix_problem.py" />
+        <option value="$PROJECT_DIR$/multiLayerPolicy.py" />
         <option value="$PROJECT_DIR$/util.py" />
+        <option value="$PROJECT_DIR$/generator.py" />
+        <option value="$PROJECT_DIR$/discriminator.py" />
         <option value="$PROJECT_DIR$/pid.py" />
+        <option value="$PROJECT_DIR$/play_with_ur5.py" />
         <option value="$PROJECT_DIR$/trpo.py" />
       </list>
     </option>
@@ -223,6 +299,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,16 +307,10 @@
               <item name="project" type="b2602c69:ProjectViewProjectNode" />
               <item name="project" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="history" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -265,25 +336,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.trpo">
-    <configuration name="discriminator" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="project" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/discriminator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="fix_problem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -341,6 +393,25 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="play_with_ur5" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/play_with_ur5.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="trpo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -348,7 +419,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="sftp://dongjg@10.13.23.95:22/usr/bin/python3.5" />
+      <option name="SDK_HOME" value="C:\Program Files\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -380,18 +451,18 @@
     <list>
       <item itemvalue="Jupyter Notebook.project" />
       <item itemvalue="Python.multiLayerPolicy" />
-      <item itemvalue="Python.discriminator" />
       <item itemvalue="Python.pid" />
       <item itemvalue="Python.fix_problem" />
       <item itemvalue="Python.trpo" />
+      <item itemvalue="Python.play_with_ur5" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.trpo" />
-        <item itemvalue="Python.fix_problem" />
+        <item itemvalue="Python.play_with_ur5" />
         <item itemvalue="Python.pid" />
+        <item itemvalue="Python.fix_problem" />
         <item itemvalue="Python.multiLayerPolicy" />
-        <item itemvalue="Python.discriminator" />
       </list>
     </recent_temporary>
   </component>
@@ -427,7 +498,21 @@
       <option name="project" value="LOCAL" />
       <updated>1540868863213</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add test function">
+      <created>1540869596762</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1540869596762</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix the problem of logger">
+      <created>1540871179516</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1540871179516</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -441,58 +526,57 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50214595" side_tool="true" weight="0.3260234" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32796487" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.34846267" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.329429" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32796487" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32650074" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.34846267" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32650074" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.121313676" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.12533513" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" x="652" y="227" width="615" height="575" id="SciView" order="4" weight="0.3297587" />
       <window_info id="Structure" order="3" sideWeight="0.501462" side_tool="true" weight="0.17627347" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3967789" />
       <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3967789" />
       <window_info content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Data View" order="2" weight="0.3299356" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32748538" />
+      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="File Transfer" order="12" weight="0.32796487" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.08981233" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329429" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" x="652" y="227" width="615" height="575" id="SciView" order="4" weight="0.3297587" />
-      <window_info id="Structure" order="3" sideWeight="0.501462" side_tool="true" weight="0.17627347" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.34846267" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32748538" />
-      <window_info anchor="right" id="Data View" order="2" weight="0.3299356" />
-      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32650074" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3967789" />
-      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32748538" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.3260234" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.08981233" />
+      <window_info id="Structure" order="3" sideWeight="0.501462" side_tool="true" weight="0.17627347" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329429" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.34846267" />
+      <window_info anchor="right" id="Data View" order="2" weight="0.3299356" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32748538" />
+      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3967789" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32748538" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50214595" side_tool="true" weight="0.3260234" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329429" />
+      <window_info anchor="right" x="652" y="227" width="615" height="575" id="SciView" order="4" weight="0.3297587" />
       <window_info anchor="bottom" id="File Transfer" order="13" weight="0.32796487" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Python Console" order="8" weight="0.32650074" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +619,9 @@
     </ignored-roots>
     <MESSAGE value="the first version nearly finished" />
     <MESSAGE value="finish the first version" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish the first version" />
+    <MESSAGE value="add test function" />
+    <MESSAGE value="fix the problem of logger" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix the problem of logger" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -559,7 +645,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="115" />
+      <option name="time" value="117" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -617,28 +703,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/reference/baselines/baselines/gail/trpo_mpi.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/wrappers/time_limit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tutorial.py" />
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/distributions/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-666" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/tensorflow/contrib/distributions/python/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ML-Tutorial-Experiment/Experiments/Keras_GAN.ipynb" />
     <entry file="file://$PROJECT_DIR$/reference/baselines/baselines/gail/run_mujoco.py" />
     <entry file="file://$PROJECT_DIR$/baselines/baselines/logger.py" />
     <entry file="file://$PROJECT_DIR$/baselines/baselines/common/mpi_running_mean_std.py" />
@@ -698,16 +762,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/history/Demonstrator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="70" column="12" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -740,9 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="558">
           <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -753,50 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/discriminator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="33" column="66" selection-start-line="33" selection-start-column="66" selection-end-line="33" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/registration.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="165" column="4" selection-start-line="165" selection-start-column="4" selection-end-line="165" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/mujoco_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="84" column="28" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/reacher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="22" column="4" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="32" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Program Files/Python36/Lib/site-packages/tensorflow/python/layers/core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -804,50 +811,130 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fix_problem.py" />
     <entry file="file://$PROJECT_DIR$/multiLayerPolicy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="31" column="33" selection-start-line="31" selection-start-column="33" selection-end-line="31" selection-end-column="33" />
+        <state relative-caret-position="72">
+          <caret line="8" column="55" selection-start-line="8" selection-start-column="55" selection-end-line="8" selection-end-column="55" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fix_problem.py">
+    <entry file="file://$PROJECT_DIR$/history/Demonstrator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="26" column="10" lean-forward="true" selection-start-line="26" selection-start-column="10" selection-end-line="26" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="248">
+          <caret line="91" column="33" lean-forward="true" selection-start-line="91" selection-start-column="14" selection-end-line="91" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/util.py">
+    <entry file="file://$PROJECT_DIR$/history/Gene_env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="130" column="30" selection-start-line="130" selection-start-column="30" selection-end-line="130" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="42" />
+        <state relative-caret-position="828">
+          <caret line="52" column="60" selection-start-line="52" selection-start-column="60" selection-end-line="52" selection-end-column="60" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/assets/reacher.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/mujoco_py/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/mujoco_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/mujoco/reacher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="39" column="40" lean-forward="true" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UR5+gripper/UR5gripper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/site-packages/gym/envs/registration.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="72" column="18" lean-forward="true" selection-start-line="72" selection-start-column="18" selection-end-line="72" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/play_with_ur5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="30" column="15" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/util.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1534">
+          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="6" column="81" selection-start-line="6" selection-start-column="81" selection-end-line="6" selection-end-column="81" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/discriminator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="87" column="33" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/trpo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
+        <state relative-caret-position="2124">
+          <caret line="235" column="26" lean-forward="true" selection-start-line="235" selection-start-column="26" selection-end-line="235" selection-end-column="26" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

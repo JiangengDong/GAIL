@@ -6,7 +6,7 @@ from util import (RunningMeanStd, DiagGaussianPd)
 
 
 class MultiLayerPolicy:
-    def __init__(self, name, ob, ac_shape, hid_size=1024, num_hid_layers=3, reuse=False):
+    def __init__(self, name, ob, ac_shape, hid_size=128, num_hid_layers=3, reuse=False):
         with tf.variable_scope(name, reuse):
             self.scope = tf.get_variable_scope().name
             self.build_net(ob, ac_shape, hid_size, num_hid_layers)

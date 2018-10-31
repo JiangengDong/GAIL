@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Lab317" uploadOnCheckin="ef805fa7-b7b8-4e8b-845f-648c68d92a57">
-    <serverData>
-      <paths name="Lab317">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/gail_dev" local="$PROJECT_DIR$" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
+  <component name="PublishConfigData" uploadOnCheckin="ef805fa7-b7b8-4e8b-845f-648c68d92a57">
     <option name="myUploadOnCheckinName" value="Lab317" />
   </component>
 </project>

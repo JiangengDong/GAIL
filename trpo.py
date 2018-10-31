@@ -1,8 +1,8 @@
 import tensorflow as tf
 import numpy as np
 import gym
+import glob
 from time import time
-from typing import List, Optional
 from numpy import (sqrt, arctan2, arccos)
 from numpy import pi as PI
 
@@ -39,8 +39,7 @@ def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
 class TRPO:
     def __init__(self, env,
                  ent_coeff=0,
-                 max_episode=100,
-                 g_step=3,
+                 g_step=2,
                  d_step=1,
                  vf_step=3,
                  gamma=0.995,
@@ -49,7 +48,6 @@ class TRPO:
                  cg_damping=0.1):
         self.env = env
         self.ent_coeff = ent_coeff
-        self.max_episode = max_episode
         self.g_step = g_step
         self.d_step = d_step
         self.vf_step = vf_step
@@ -128,7 +126,7 @@ class TRPO:
         fvp = tf.concat([tf.reshape(fvp_part, (n,)) for (fvp_part, n) in zip(fvp_list, n_list)], axis=0)
         return fvp + cg_damping * vector
 
-    def train(self):
+    def train(self, max_episode):
         with tf.Session() as sess:
             # Preparation
             fvp = lambda p: sess.run(self.fvp,
@@ -139,7 +137,8 @@ class TRPO:
             get_kl = lambda ob, ac, adv: sess.run(self.meanKl,
                                                   {self.ob: ob, self.ac: ac, self.atarg: adv})
             saver = tf.train.Saver()
-            save_var = lambda: saver.save(sess, "./log/gail")
+            save_var = lambda path="./log/gail.ckpt": saver.save(sess, path)
+            load_var = lambda path="./log/gail.ckpt": saver.restore(sess, path)
             assign = lambda: sess.run(self.assignNewToOld)
 
             def ob_proc(ob):
@@ -158,10 +157,14 @@ class TRPO:
             generator = Generator(self.pi, self.env, self.d, 1000)
 
             # Start training
-            sess.run(self.init)
-            st_time = time()
+            if glob.glob("./log/gail.ckpt.*"):
+                with logger("load last trained data"):
+                    load_var()
+            else:
+                with logger("initialize variable"):
+                    sess.run(self.init)
             with logger("training"):
-                for episode in range(self.max_episode):
+                for episode in range(max_episode):
                     with logger("episode %d" % episode):
                         if episode % 20 == 0:
                             with logger("save data"):
@@ -226,12 +229,14 @@ class TRPO:
     def test(self):
         with tf.Session() as sess:
             saver = tf.train.Saver()
-            saver.restore(sess, "./log/gail")
-            generator = Generator(self.pi, self.env, self.d, 1000)
-            generator.sample_trajectory(display=True)
+            saver.restore(sess, "./log/gail.ckpt")
+            writer = tf.summary.FileWriter("./log/graph", tf.get_default_graph())
+            generator = Generator(self.pi, self.env, self.d, 1000, "./record/test.mp4")
+            generator.sample_trajectory(display=True, record=True)
+            writer.close()
 
 
 if __name__ == '__main__':
     env = env_wrapper(gym.make("Reacher-v2"))
     trainer = TRPO(env)
-    trainer.train()
+    trainer.train(1001)

@@ -49,8 +49,8 @@ def main():
 
     pol = PIDPolicy(shape=(2,), ob_proc=process_ob)
 
-    demo = Generator(pol, env, None, 2000)
-    traj = demo.sample_trajectory(display=True)
+    demo = Generator(pol, env, None, 2000, record_path="./record/demo.mp4")
+    traj = demo.sample_trajectory(display=True, record=True)
     traj = demo.process_trajectory(traj, 0.995, 0.97)
     # plt.plot(traj["adv"])
     # plt.plot(traj["vpred"])

@@ -9,10 +9,11 @@ def logit_bernoulli_entropy(logits):
 
 
 class Discriminator:
-    def __init__(self, name, ob_shape, ac_shape, hid_size=1024, ent_coff=0.001):
+    def __init__(self, name, ob_shape, ac_shape, hid_size=128, ent_coff=0.001):
         with tf.variable_scope(name):
             self.scope = tf.get_variable_scope().name
             self.build_net(ob_shape, ac_shape, hid_size, ent_coff)
+            self.writer = tf.summary.FileWriter("./log/discriminator")
 
     def build_net(self, ob_shape, ac_shape, hid_size, ent_coeff):
         # build placeholders
@@ -43,6 +44,8 @@ class Discriminator:
         # Build accuracy
         generator_acc = tf.reduce_mean(tf.to_float(tf.nn.sigmoid(generator_logits) < 0.5))
         expert_acc = tf.reduce_mean(tf.to_float(tf.nn.sigmoid(expert_logits) > 0.5))
+        self.merged = tf.summary.merge([tf.summary.scalar("Expert accuracy", expert_acc),
+                                        tf.summary.scalar("Generator accuracy", generator_acc)])
 
         # loss for the two networks respectively
         generator_loss = tf.nn.sigmoid_cross_entropy_with_logits(logits=generator_logits,
@@ -74,11 +77,17 @@ class Discriminator:
         return tf.get_default_session().run(self.reward_op, feed_dict)
 
     def train(self, generator_obs, generator_acs, expert_obs, expert_acs):
-        tf.get_default_session().run(self.adam,
-                                     {self.generator_obs: generator_obs,
-                                      self.generator_acs: generator_acs,
-                                      self.expert_obs: expert_obs,
-                                      self.expert_acs: expert_acs})
+        _, summary = tf.get_default_session().run([self.adam, self.merged],
+                                                  {self.generator_obs: generator_obs,
+                                                   self.generator_acs: generator_acs,
+                                                   self.expert_obs: expert_obs,
+                                                   self.expert_acs: expert_acs})
+        try:
+            self.summary_step += 1
+        except AttributeError:
+            self.summary_step = 0
+        finally:
+            self.writer.add_summary(summary, self.summary_step)
 
 
 def main():
