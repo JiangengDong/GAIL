@@ -1,5 +1,44 @@
 import tensorflow as tf
 import numpy as np
+import glfw
+from time import time
+from types import MethodType
+from contextlib import contextmanager
+
+
+def env_wrapper(env):
+    def close(self):
+        if self.viewer is not None:
+            glfw.destroy_window(self.viewer.window)
+            self.viewer = None
+
+    def reset_model(self):
+        qpos = self.np_random.uniform(low=-0.1, high=0.1, size=self.model.nq) + self.init_qpos
+        while True:
+            self.goal = self.np_random.uniform(low=-.2, high=.2, size=2)
+            if 0.01 < np.linalg.norm(self.goal) < 0.21:
+                break
+        qpos[-2:] = self.goal
+        qvel = self.init_qvel + self.np_random.uniform(low=-.005, high=.005, size=self.model.nv)
+        qvel[-2:] = 0
+        self.set_state(qpos, qvel)
+        return self._get_obs()
+
+    def render(self, mode='human'):
+        if mode == 'rgb_array':
+            self._get_viewer().render()
+            # window size used for old mujoco-py:
+            width, height = 1920, 1080
+            data = self._get_viewer().read_pixels(width, height, depth=False)
+            # original image is upside-down, so flip it
+            return data[::-1, :, :]
+        elif mode == 'human':
+            self._get_viewer().render()
+
+    env.unwrapped.close = MethodType(close, env.unwrapped)
+    env.unwrapped.reset_model = MethodType(reset_model, env.unwrapped)
+    env.unwrapped.render = MethodType(render, env.unwrapped)
+    return env
 
 
 class DiagGaussianPd:
@@ -71,3 +110,34 @@ class RunningMeanStd:
                      self.newsumsq: np.square(x).sum(axis=0),
                      self.newcount: np.array([len(x)], dtype='float64')}
         tf.get_default_session().run(self.update_list, feed_dict)
+
+RANK = 0
+START_TIME = time()
+
+
+@contextmanager
+def logger(info):
+    global RANK
+    if RANK == 0:
+        print("%.2f: start %s" % (time() - START_TIME, info))
+    elif RANK == 1:
+        print("=" * 16)
+        print("%.2f: start %s" % (time() - START_TIME, info))
+    elif RANK == 2:
+        print("\t" + "-" * 12)
+        print("\t%.2f: start %s" % (time() - START_TIME, info))
+    else:
+        print("\t" * (RANK - 1) + "%.2f: start %s" % (time() - START_TIME, info))
+    RANK += 1
+    yield
+    if RANK == 1:
+        print("%.2f: end %s" % (time() - START_TIME, info))
+    elif RANK == 2:
+        print("%.2f: end %s" % (time() - START_TIME, info))
+        print("=" * 16)
+    elif RANK == 3:
+        print("\t%.2f: end %s" % (time() - START_TIME, info))
+        print("\t" + "-" * 12)
+    else:
+        print("\t" * (RANK - 2) + "%.2f: end %s" % (time() - START_TIME, info))
+    RANK -= 1

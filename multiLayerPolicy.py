@@ -6,7 +6,7 @@ from util import (RunningMeanStd, DiagGaussianPd)
 
 
 class MultiLayerPolicy:
-    def __init__(self, name, ob, ac_shape, hid_size=1024, num_hid_layers=3, reuse=False):
+    def __init__(self, name, ob, ac_shape, hid_size=128, num_hid_layers=3, reuse=False):
         with tf.variable_scope(name, reuse):
             self.scope = tf.get_variable_scope().name
             self.build_net(ob, ac_shape, hid_size, num_hid_layers)
@@ -37,7 +37,7 @@ class MultiLayerPolicy:
         # train value function
         self.vreal = tf.placeholder(dtype=tf.float32, shape=(None,), name="vreal")
         vloss = tf.reduce_mean(tf.square(self.vreal-self.vpred))
-        valueFunctionVars = [v for v in self.get_trainable_variables() if v.name.startswith("pi/vff")]
+        valueFunctionVars = [v for v in self.get_trainable_variables() if v.name.startswith("%s/vff" % self.scope)]
         self.vadam = tf.train.AdamOptimizer().minimize(vloss, var_list=valueFunctionVars)
 
         # net to predict mean and standard deviation of action
