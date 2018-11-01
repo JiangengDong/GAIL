@@ -39,7 +39,7 @@ def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
 class TRPO:
     def __init__(self, env,
                  ent_coeff=0,
-                 g_step=2,
+                 g_step=4,
                  d_step=1,
                  vf_step=3,
                  gamma=0.995,
