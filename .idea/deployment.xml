@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" uploadOnCheckin="ef805fa7-b7b8-4e8b-845f-648c68d92a57">
-    <option name="myUploadOnCheckinName" value="Lab317" />
-  </component>
+  <component name="PublishConfigData" persistUploadOnCheckin="false" />
 </project>
