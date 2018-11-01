@@ -1,7 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a6b1aa96-facf-4931-90c0-fbc6b33d4e42" name="Default" comment="" />
+    <list default="true" id="a6b1aa96-facf-4931-90c0-fbc6b33d4e42" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/UR5gripper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/base.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/driver.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/forearm.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/link_0.STL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/link_1.STL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/link_2.STL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/link_3.STL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/palm.STL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/shoulder.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/upperarm.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/wrist1.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/wrist2.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/mesh/visual/wrist3.stl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/grass2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/metal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/metal2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/wood.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/textures/wood2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UR5+gripper/ur5_gripper.urdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/play_with_ur5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/discriminator.py" beforeDir="false" afterPath="$PROJECT_DIR$/discriminator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/discriminator.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528202108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528968624.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528969765.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528969810.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528970124.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971178.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971672.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971714.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528971753.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/discriminator/events.out.tfevents.1528975432.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/checkpoint" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528202107.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528968623.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528969764.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528969810.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528970124.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971108.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971178.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971671.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971714.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528971753.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/events.out.tfevents.1528975432.DONGJIANGENG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/generator/generator.ckpt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/multiLayerPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/multiLayerPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/1.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/10.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/11.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/12.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/13.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/14.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/15.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/16.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/17.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/18.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/19.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/2.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/20.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/21.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/22.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/23.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/24.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/25.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/26.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/27.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/28.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/29.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/3.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/30.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/4.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/5.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/6.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/7.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/8.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/9.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_1.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_10.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_11.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_12.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_13.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_14.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_15.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_16.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_17.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_18.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_19.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_2.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_20.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_21.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_22.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_23.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_24.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_25.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_26.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_27.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_28.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_29.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_3.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_30.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_4.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_5.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_6.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_7.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_8.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/locus/Demo_9.npz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/test.meta.json" beforeDir="false" afterPath="$PROJECT_DIR$/record/test.meta.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/record/test.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/record/test.mp4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/trpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +159,7 @@
       <file leaf-file-name="multiLayerPolicy.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/multiLayerPolicy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
+            <state relative-caret-position="-54">
               <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -49,7 +171,7 @@
       <file leaf-file-name="discriminator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/discriminator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1548">
+            <state relative-caret-position="1584">
               <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -61,7 +183,7 @@
       <file leaf-file-name="trpo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trpo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
+            <state relative-caret-position="594">
               <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -74,7 +196,7 @@
         <entry file="file://$PROJECT_DIR$/generator.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1404">
-              <caret line="78" column="82" selection-start-line="78" selection-start-column="82" selection-end-line="78" selection-end-column="82" />
+              <caret line="78" column="7" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -82,8 +204,8 @@
       <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1278">
-              <caret line="72" column="58" selection-start-line="72" selection-start-column="58" selection-end-line="72" selection-end-column="58" />
+            <state relative-caret-position="1296">
+              <caret line="72" selection-start-line="72" selection-end-line="72" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -127,7 +249,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/reference/baselines" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -182,7 +304,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
-    <option name="width" value="979" />
+    <option name="width" value="980" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -210,7 +332,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,6 +343,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -396,27 +518,27 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50214595" side_tool="true" weight="0.3260234" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="File Transfer" weight="0.32894737" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32748538" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49785408" weight="0.3494152" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.32748538" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32748538" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.17828418" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49853802" visible="true" weight="0.1802949" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" x="652" y="227" width="615" height="575" id="SciView" order="4" weight="0.3297587" />
       <window_info id="Structure" order="3" sideWeight="0.501462" side_tool="true" weight="0.17627347" />
-      <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39766082" />
+      <window_info id="Favorites" order="1" side_tool="true" />
       <window_info content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Data View" order="2" weight="0.3299356" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32748538" />
+      <window_info anchor="right" x="0" y="0" width="434" height="848" id="Documentation" order="5" weight="0.3299356" />
+      <window_info anchor="bottom" id="File Transfer" order="14" weight="0.32894737" />
+      <window_info anchor="bottom" id="Message" order="0" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,7 +790,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/discriminator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1548">
+        <state relative-caret-position="1584">
           <caret line="88" column="12" selection-start-line="88" selection-start-column="12" selection-end-line="88" selection-end-column="12" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -679,14 +801,14 @@
     <entry file="file://$PROJECT_DIR$/generator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
-          <caret line="78" column="82" selection-start-line="78" selection-start-column="82" selection-end-line="78" selection-end-column="82" />
+          <caret line="78" column="7" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
-          <caret line="72" column="58" selection-start-line="72" selection-start-column="58" selection-end-line="72" selection-end-column="58" />
+        <state relative-caret-position="1296">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -695,7 +817,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trpo.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
+        <state relative-caret-position="594">
           <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -705,7 +827,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/multiLayerPolicy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="-54">
           <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />

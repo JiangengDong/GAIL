@@ -1,11 +1,16 @@
 import tensorflow as tf
 import numpy as np
 import gym
-from typing import List, Optional
+import glob
+from time import time
+from numpy import (sqrt, arctan2, arccos)
+from numpy import pi as PI
 
 from multiLayerPolicy import MultiLayerPolicy
 from discriminator import Discriminator
 from generator import Generator
+from pid import PIDPolicy
+from util import (env_wrapper, logger)
 
 
 def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
@@ -34,8 +39,7 @@ def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
 class TRPO:
     def __init__(self, env,
                  ent_coeff=0,
-                 max_episode=100000,
-                 g_step=3,
+                 g_step=4,
                  d_step=1,
                  vf_step=3,
                  gamma=0.995,
@@ -44,7 +48,6 @@ class TRPO:
                  cg_damping=0.1):
         self.env = env
         self.ent_coeff = ent_coeff
-        self.max_episode = max_episode
         self.g_step = g_step
         self.d_step = d_step
         self.vf_step = vf_step
@@ -52,21 +55,19 @@ class TRPO:
         self.lam = lam
         self.max_kl = max_kl
         self.cg_damping = cg_damping
-        self.build_net(env, ent_coeff)
+        self.build_net(env, ent_coeff, cg_damping)
 
-    def build_net(self, env, ent_coeff):
+    def build_net(self, env, ent_coeff, cg_damping):
         # Build two policies. Optimize the performance of pi w.r.t oldpi in each step.
         self.ob = tf.placeholder(dtype=tf.float32, shape=(None,) + env.observation_space.shape, name="ob")
         self.pi = MultiLayerPolicy("pi", self.ob, env.action_space.shape)
-        self.oldpi = MultiLayerPolicy("pi", self.ob, env.action_space.shape)
-        self.assignNewToOld = [tf.assign(oldv, newv) for (oldv, newv) in
-                               zip(self.oldpi.get_variables(), self.pi.get_variables())]
+        self.oldpi = MultiLayerPolicy("oldpi", self.ob, env.action_space.shape)
+        self.assignNewToOld = [tf.assign(oldv, newv)
+                               for oldv, newv in zip(self.oldpi.get_variables(), self.pi.get_variables())]
         # Build discriminator.
         self.d = Discriminator(name="discriminator",
                                ob_shape=env.observation_space.shape,
                                ac_shape=env.action_space.shape)
-        # Build generator.
-        self.g = Generator(self.pi, env, self.d, 50)
 
         # KL divergence and entropy
         self.meanKl = tf.reduce_mean(self.oldpi.pd.kl(self.pi.pd))  # D_KL using Monte Carlo on a batch
@@ -83,9 +84,10 @@ class TRPO:
         all_var_list = self.pi.get_trainable_variables()
         policyVars = [v for v in all_var_list if v.name.startswith("pi/pol") or v.name.startswith("pi/logstd")]
         self.vector = tf.placeholder(dtype=tf.float32, shape=(None,), name="vector")
-        self.fvp = self.build_fisher_vector_product(self.meanKl, self.vector, policyVars)
+        self.fvp = self.build_fisher_vector_product(self.meanKl, self.vector, policyVars, cg_damping)
         # loss and gradient
         self.optimgrad = tf.gradients(self.optimgain, policyVars)
+        self.optimgrad = tf.concat([tf.reshape(g, [int(np.prod(g.shape))]) for g in self.optimgrad], axis=0)
         # utils
         self.init = tf.global_variables_initializer()
         self.get_theta = tf.concat([tf.reshape(var, [int(np.prod(var.shape))]) for var in policyVars], axis=0)
@@ -101,11 +103,12 @@ class TRPO:
         assign_list = []
         start = 0
         for (shape, var, size) in zip(shape_list, var_list, size_list):
-            assign_list.append(tf.assign(var, tf.reshape(self.theta[start, start+size], shape)))
+            assign_list.append(tf.assign(var, tf.reshape(self.theta[start:start + size], shape)))
             start += size
         return tf.group(*assign_list)
 
-    def build_fisher_vector_product(self, kl, vector, var_list):
+    @staticmethod
+    def build_fisher_vector_product(kl, vector, var_list, cg_damping):
         kl_grad_list = tf.gradients(kl, var_list)
         # transform vector into the same shape of matrix in var_list
         shape_list = [var.shape.as_list() for var in var_list]
@@ -120,63 +123,120 @@ class TRPO:
         # element-wise product of kl_grad and vector, then add all the elements together
         gvp = tf.add_n([tf.reduce_sum(g * tangent) for (g, tangent) in zip(kl_grad_list, vector_list)])
         fvp_list = tf.gradients(gvp, var_list)
-        fvp = tf.concat([tf.reshape(fvp_part, (n,)) for (fvp_part, n) in zip(fvp_list, n_list)])
-        return fvp
+        fvp = tf.concat([tf.reshape(fvp_part, (n,)) for (fvp_part, n) in zip(fvp_list, n_list)], axis=0)
+        return fvp + cg_damping * vector
 
-    def train(self):
+    def train(self, max_episode):
         with tf.Session() as sess:
             # Preparation
-            fvp = lambda p, ob, ac, adv: sess.run(self.fvp,
-                                                  {self.ob: ob, self.ac: ac,
-                                                   self.atarg: adv, self.vector: p}) + self.cg_damping * p
+            fvp = lambda p: sess.run(self.fvp,
+                                     {self.ob: obs, self.ac: acs,
+                                      self.atarg: advs, self.vector: p})
             set_theta = lambda theta: sess.run(self.set_theta, {self.theta: theta})
             get_theta = lambda: sess.run(self.get_theta)
             get_kl = lambda ob, ac, adv: sess.run(self.meanKl,
                                                   {self.ob: ob, self.ac: ac, self.atarg: adv})
+            saver = tf.train.Saver()
+            save_var = lambda path="./log/gail.ckpt": saver.save(sess, path)
+            load_var = lambda path="./log/gail.ckpt": saver.restore(sess, path)
+            assign = lambda: sess.run(self.assignNewToOld)
+
+            def ob_proc(ob):
+                target = ob[4:6]
+                r = sqrt(target[0] ** 2 + target[1] ** 2)
+                l1 = 0.1
+                l2 = 0.11
+                assert abs(l1 - l2) < r < l1 + l2
+                q_target = np.array([arctan2(target[1], target[0]) - arccos((r ** 2 + l1 ** 2 - l2 ** 2) / 2 / r / l1),
+                                     PI - arccos((l1 ** 2 + l2 ** 2 - r ** 2) / 2 / l1 / l2)])
+                q = arctan2(ob[2:4], ob[0:2])
+                return np.mod(q_target - q + PI, 2 * PI) - PI
+
+            # Build generator
+            expert = Generator(PIDPolicy(shape=(2,), ob_proc=ob_proc), self.env, self.d, 1000)
+            generator = Generator(self.pi, self.env, self.d, 1000)
 
             # Start training
-            sess.run(self.init)
-            for episode in range(self.max_episode):
-                for _ in range(self.g_step):
-                    # sample trajectory
-                    traj = self.g.sample_trajectory()
-                    traj = self.g.process_trajectory(traj, self.gamma, self.lam)
-                    obs, acs, advs, vtarg, vpred = traj["ob"], traj["ac"], traj["adv"], traj["tdlamret"], traj["vpred"]
-                    # normalization
-                    advs = (advs - advs.mean()) / advs.std()  # advantage is normalized on a batch
-                    self.pi.ob_rms.update(obs)  # observation is normalized on all history data
-                    # data required to calculate fisher vector product
-                    fvpargs = obs, acs, advs
+            if glob.glob("./log/gail.ckpt.*"):
+                with logger("load last trained data"):
+                    load_var()
+            else:
+                with logger("initialize variable"):
+                    sess.run(self.init)
+            with logger("training"):
+                for episode in range(max_episode):
+                    with logger("episode %d" % episode):
+                        if episode % 20 == 0:
+                            with logger("save data"):
+                                save_var()
+                        with logger("train generator"):
+                            for g_iter in range(self.g_step):
+                                # sample trajectory
+                                with logger("sample trajectory"):
+                                    traj = generator.sample_trajectory()
+                                    traj = generator.process_trajectory(traj, self.gamma, self.lam)
+                                    obs, acs, advs, vtarg, vpred = traj["ob"], traj["ac"], traj["adv"], traj[
+                                        "tdlamret"], traj["vpred"]
+                                # normalization
+                                advs = (advs - advs.mean()) / advs.std()  # advantage is normalized on a batch
+                                self.pi.ob_rms.update(obs)  # observation is normalized on all history data
+                                assign()
 
-                    # loss and gradients on this batch
-                    loss, g = sess.run([self.optimgain, self.optimgrad],
-                                       {self.ob: obs, self.ac: acs, self.atarg: advs})
+                                # loss and gradients on this batch
+                                loss, g = sess.run([self.optimgain, self.optimgrad],
+                                                   {self.ob: obs, self.ac: acs, self.atarg: advs})
 
-                    if not np.allclose(g, 0):
-                        # use conjunct gradient method to solve Hs=g, where H = nabla^2 D_KL
-                        stepdir = cg(lambda p: fvp(p, obs, acs, advs), g)
-                        sHs = 0.5*stepdir.dot(fvp(stepdir, obs, acs, advs))
-                        lm = np.sqrt(sHs/self.max_kl)
-                        fullstep = stepdir/lm   # get step from direction
-                        expertedimprove = g.dot(fullstep)
-                        surrogate_gain_before = loss
-                        stepsize = 1.0
-                        theta_before = get_theta()
-                        for _ in range(10):
-                            theta_new = theta_before + fullstep*stepsize
-                            set_theta(theta_new)
-                            surr, kl = sess.run([self.optimgain, self.meanKl],
-                                                {self.ob: obs, self.ac: acs, self.atarg: advs})
-                            if kl > 1.5*self.max_kl:
-                                pass    # violate kl constraint
-                            elif surr-surrogate_gain_before < 0:
-                                pass    # surrogate gain not improve
-                            else:
-                                break   # stepsize OK
-                            stepsize *= 5
-                        else:
-                            set_theta(theta_before)     # find no good step
-                    for _ in range(self.vf_step):
-                        # TODO: expert trajectory
-                        self.pi.ob_rms.update(obs)
-                        self.pi.train_value_function(obs, vtarg)
+                                if not np.allclose(g, 0):
+                                    with logger("update policy"):
+                                        # use conjunct gradient method to solve Hs=g, where H = nabla^2 D_KL
+                                        stepdir = cg(fvp, g)
+                                        sHs = 0.5 * stepdir.dot(fvp(stepdir))
+                                        lm = np.sqrt(sHs / self.max_kl)
+                                        fullstep = stepdir / lm  # get step from direction
+                                        expertedimprove = g.dot(fullstep)
+                                        surrogate_gain_before = loss
+                                        stepsize = 1.0
+                                        theta_before = get_theta()
+                                        for _ in range(10):
+                                            theta_new = theta_before + fullstep * stepsize
+                                            set_theta(theta_new)
+                                            surr, kl = sess.run([self.optimgain, self.meanKl],
+                                                                {self.ob: obs, self.ac: acs, self.atarg: advs})
+                                            if kl > 1.5 * self.max_kl:
+                                                pass  # violate kl constraint
+                                            elif surr - surrogate_gain_before < 0:
+                                                pass  # surrogate gain not improve
+                                            else:
+                                                break  # stepsize OK
+                                            stepsize *= 5
+                                        else:
+                                            set_theta(theta_before)  # find no good step
+                                # update value function
+                                with logger("update value function"):
+                                    for _ in range(self.vf_step):
+                                        traj = generator.sample_trajectory()
+                                        traj = generator.process_trajectory(traj, self.gamma, self.lam)
+                                        obs, vtarg = traj["ob"], traj["tdlamret"]
+                                        self.pi.ob_rms.update(obs)
+                                        self.pi.train_value_function(obs, vtarg)
+                        with logger("train discriminator"):
+                            for _ in range(self.d_step):
+                                traj_g = generator.sample_trajectory()
+                                traj_e = expert.sample_trajectory()
+                                self.d.obs_rms.update(np.concatenate((traj_e["ob"], traj_g["ob"]), 0))
+                                self.d.train(traj_g["ob"], traj_g["ac"], traj_e["ob"], traj_e["ac"])
+
+    def test(self):
+        with tf.Session() as sess:
+            saver = tf.train.Saver()
+            saver.restore(sess, "./log/gail.ckpt")
+            writer = tf.summary.FileWriter("./log/graph", tf.get_default_graph())
+            generator = Generator(self.pi, self.env, self.d, 1000, "./record/test.mp4")
+            generator.sample_trajectory(display=True, record=True)
+            writer.close()
+
+
+if __name__ == '__main__':
+    env = env_wrapper(gym.make("Reacher-v2"))
+    trainer = TRPO(env)
+    trainer.test()
