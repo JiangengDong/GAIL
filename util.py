@@ -108,9 +108,8 @@ class RunningMeanStd:
         x = x.astype('float64')
         feed_dict = {self.newsum: x.sum(axis=0),
                      self.newsumsq: np.square(x).sum(axis=0),
-                     self.newcount: x.shape[0]}
+                     self.newcount: np.array([len(x)], dtype='float64')}
         tf.get_default_session().run(self.update_list, feed_dict)
-
 
 RANK = 0
 START_TIME = time()
