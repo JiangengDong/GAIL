@@ -2,7 +2,6 @@ import tensorflow as tf
 import numpy as np
 import gym
 import glob
-from time import time
 from numpy import (sqrt, arctan2, arccos)
 from numpy import pi as PI
 
@@ -66,8 +65,9 @@ class TRPO:
                                for oldv, newv in zip(self.oldpi.get_variables(), self.pi.get_variables())]
         # Build discriminator.
         self.d = Discriminator(name="discriminator",
-                               ob_shape=env.observation_space.shape,
-                               ac_shape=env.action_space.shape)
+                               ob_shape=(4,),
+                               ac_shape=env.action_space.shape,
+                               ob_slice=[4, 5, 8, 9])
 
         # KL divergence and entropy
         self.meanKl = tf.reduce_mean(self.oldpi.pd.kl(self.pi.pd))  # D_KL using Monte Carlo on a batch
@@ -239,4 +239,4 @@ class TRPO:
 if __name__ == '__main__':
     env = env_wrapper(gym.make("Reacher-v2"))
     trainer = TRPO(env)
-    trainer.test()
+    trainer.train(20)

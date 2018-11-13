@@ -9,10 +9,15 @@ def logit_bernoulli_entropy(logits):
 
 
 class Discriminator:
-    def __init__(self, name, ob_shape, ac_shape, hid_size=128, ent_coff=0.001):
+    def __init__(self, name, ob_shape, ac_shape, hid_size=128, ent_coff=0.001, ob_slice=None):
         with tf.variable_scope(name):
             self.scope = tf.get_variable_scope().name
             self.build_net(ob_shape, ac_shape, hid_size, ent_coff)
+            if ob_slice is not None:
+                assert len(ob_slice) == ob_shape[0]
+                self.ob_slice = ob_slice
+            else:
+                self.ob_slice = range(ob_shape)
             self.writer = tf.summary.FileWriter("./log/discriminator")
 
     def build_net(self, ob_shape, ac_shape, hid_size, ent_coeff):
@@ -73,14 +78,14 @@ class Discriminator:
             obs = np.expand_dims(obs, 0)
         if len(acs.shape) == 1:
             acs = np.expand_dims(acs, 0)
-        feed_dict = {self.generator_obs: obs, self.generator_acs: acs}
+        feed_dict = {self.generator_obs: obs[:, self.ob_slice], self.generator_acs: acs}
         return tf.get_default_session().run(self.reward_op, feed_dict)
 
     def train(self, generator_obs, generator_acs, expert_obs, expert_acs):
         _, summary = tf.get_default_session().run([self.adam, self.merged],
-                                                  {self.generator_obs: generator_obs,
+                                                  {self.generator_obs: generator_obs[:, self.ob_slice],
                                                    self.generator_acs: generator_acs,
-                                                   self.expert_obs: expert_obs,
+                                                   self.expert_obs: expert_obs[:, self.ob_slice],
                                                    self.expert_acs: expert_acs})
         try:
             self.summary_step += 1
