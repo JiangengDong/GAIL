@@ -35,9 +35,20 @@ def env_wrapper(env):
         elif mode == 'human':
             self._get_viewer().render()
 
+    def _get_obs(self):
+        theta = self.sim.data.qpos.flat[:2]
+        return np.concatenate([
+            np.cos(theta),
+            np.sin(theta),
+            self.sim.data.qpos.flat[2:],
+            self.sim.data.qvel.flat[:2],
+            self.get_body_com("fingertip")
+        ])
+
     env.unwrapped.close = MethodType(close, env.unwrapped)
     env.unwrapped.reset_model = MethodType(reset_model, env.unwrapped)
     env.unwrapped.render = MethodType(render, env.unwrapped)
+    env.unwrapped._get_obs = MethodType(_get_obs, env.unwrapped)
     return env
 
 
@@ -99,7 +110,7 @@ class RunningMeanStd:
 
         self.newsum = tf.placeholder(shape=self.shape, dtype=tf.float64, name='sum')
         self.newsumsq = tf.placeholder(shape=self.shape, dtype=tf.float64, name='var')
-        self.newcount = tf.placeholder(shape=[], dtype=tf.float64, name='count')
+        self.newcount = tf.placeholder(shape=(), dtype=tf.float64, name='count')
         self.update_list = [tf.assign_add(self._sum, self.newsum),
                             tf.assign_add(self._sumsq, self.newsumsq),
                             tf.assign_add(self._count, self.newcount)]
@@ -108,7 +119,7 @@ class RunningMeanStd:
         x = x.astype('float64')
         feed_dict = {self.newsum: x.sum(axis=0),
                      self.newsumsq: np.square(x).sum(axis=0),
-                     self.newcount: np.array([len(x)], dtype='float64')}
+                     self.newcount: len(x)}
         tf.get_default_session().run(self.update_list, feed_dict)
 
 RANK = 0
