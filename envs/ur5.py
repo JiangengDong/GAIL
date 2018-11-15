@@ -1,11 +1,10 @@
 from gym.envs.mujoco import mujoco_env
 import numpy as np
-import gym
 
 
 class UR5(mujoco_env.MujocoEnv):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, "UR5gripper.xml", 2)
+        mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/UR5gripper.xml", 2)
 
     def step(self, a):
         # vec = self.get_body_com("fingertip")-self.get_body_com("target")
@@ -29,5 +28,6 @@ class UR5(mujoco_env.MujocoEnv):
 
 if __name__ == '__main__':
     env = UR5()
+    print(env.action_space)
     while True:
         env.render()

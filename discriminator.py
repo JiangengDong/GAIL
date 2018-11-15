@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 from util import RunningMeanStd
+import os
 
 
 def logit_bernoulli_entropy(logits):
@@ -9,23 +10,26 @@ def logit_bernoulli_entropy(logits):
 
 
 class Discriminator:
-    def __init__(self, name, ob_shape, ac_shape, hid_size=128, ent_coff=0.001, ob_slice=None):
+    def __init__(self, name, ob_shape, st_shape=(4,), hid_size=128, ent_coff=0.001, ob_slice=None):
         with tf.variable_scope(name):
             self.scope = tf.get_variable_scope().name
-            self.build_net(ob_shape, ac_shape, hid_size, ent_coff)
+            self.st_shape = st_shape
+            self.build_net(ob_shape, st_shape, hid_size, ent_coff)
             if ob_slice is not None:
                 assert len(ob_slice) == ob_shape[0]
                 self.ob_slice = ob_slice
             else:
                 self.ob_slice = range(ob_shape)
+            if not os.path.exists("./log/discriminator"):
+                os.mkdir("./log/discriminator")
             self.writer = tf.summary.FileWriter("./log/discriminator")
 
-    def build_net(self, ob_shape, ac_shape, hid_size, ent_coeff):
+    def build_net(self, ob_shape, st_shape, hid_size, ent_coeff):
         # build placeholders
-        self.generator_obs = tf.placeholder(tf.float32, (None,) + ob_shape, name="observations")
-        self.generator_acs = tf.placeholder(tf.float32, (None,) + ac_shape, name="actions")
+        self.generator_obs = tf.placeholder(tf.float32, (None,) + ob_shape, name="generator_observations")
+        self.generator_sts = tf.placeholder(tf.float32, (None,) + st_shape, name="generator_states")
         self.expert_obs = tf.placeholder(tf.float32, (None,) + ob_shape, name="expert_observations")
-        self.expert_acs = tf.placeholder(tf.float32, (None,) + ac_shape, name="expert_actions")
+        self.expert_sts = tf.placeholder(tf.float32, (None,) + st_shape, name="expert_states")
 
         # normalize observation
         with tf.variable_scope("obfilter"):
@@ -33,15 +37,16 @@ class Discriminator:
 
         # network to judge generator
         net = (self.generator_obs-self.obs_rms.mean)/self.obs_rms.std
-        net = tf.concat([net, self.generator_acs], axis=1)
         with tf.variable_scope("main_net", reuse=False):
+            net, self.generator_next_sts = tf.nn.rnn_cell.BasicRNNCell(num_units=st_shape[0])(net, self.generator_sts)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             generator_logits = tf.layers.dense(inputs=net, units=1, activation=tf.identity)
+
         # network to judge expert
         net = (self.expert_obs-self.obs_rms.mean)/self.obs_rms.std
-        net = tf.concat([net, self.expert_acs], axis=1)
         with tf.variable_scope("main_net", reuse=True):
+            net, self.expert_next_sts = tf.nn.rnn_cell.BasicRNNCell(num_units=st_shape[0])(net, self.expert_sts)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             net = tf.layers.dense(inputs=net, units=hid_size, activation=tf.nn.tanh)
             expert_logits = tf.layers.dense(inputs=net, units=1, activation=tf.identity)
@@ -73,20 +78,21 @@ class Discriminator:
     def get_trainable_variable(self):
         return tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, self.scope)
 
-    def get_reward(self, obs, acs):
+    def get_reward(self, obs, sts):
         if len(obs.shape) == 1:
             obs = np.expand_dims(obs, 0)
-        if len(acs.shape) == 1:
-            acs = np.expand_dims(acs, 0)
-        feed_dict = {self.generator_obs: obs[:, self.ob_slice], self.generator_acs: acs}
-        return tf.get_default_session().run(self.reward_op, feed_dict)
+        if len(sts.shape) == 1:
+            sts = np.expand_dims(sts, 0)
+        feed_dict = {self.generator_obs: obs[:, self.ob_slice], self.generator_sts: sts}
+        return tf.get_default_session().run([self.reward_op, self.generator_next_sts], feed_dict)
 
-    def train(self, generator_obs, generator_acs, expert_obs, expert_acs):
+    def train(self, generator_obs, generator_sts, expert_obs, expert_sts):
+        self.obs_rms.update(np.concatenate([generator_obs[:, self.ob_slice], expert_obs[:, self.ob_slice]], 0))
         _, summary = tf.get_default_session().run([self.adam, self.merged],
                                                   {self.generator_obs: generator_obs[:, self.ob_slice],
-                                                   self.generator_acs: generator_acs,
+                                                   self.generator_sts: generator_sts,
                                                    self.expert_obs: expert_obs[:, self.ob_slice],
-                                                   self.expert_acs: expert_acs})
+                                                   self.expert_sts: expert_sts})
         try:
             self.summary_step += 1
         except AttributeError:

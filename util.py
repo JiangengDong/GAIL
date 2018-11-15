@@ -12,18 +12,6 @@ def env_wrapper(env):
             glfw.destroy_window(self.viewer.window)
             self.viewer = None
 
-    def reset_model(self):
-        qpos = self.np_random.uniform(low=-0.1, high=0.1, size=self.model.nq) + self.init_qpos
-        while True:
-            self.goal = self.np_random.uniform(low=-.2, high=.2, size=2)
-            if 0.01 < np.linalg.norm(self.goal) < 0.21:
-                break
-        qpos[-2:] = self.goal
-        qvel = self.init_qvel + self.np_random.uniform(low=-.005, high=.005, size=self.model.nv)
-        qvel[-2:] = 0
-        self.set_state(qpos, qvel)
-        return self._get_obs()
-
     def render(self, mode='human'):
         if mode == 'rgb_array':
             self._get_viewer().render()
@@ -35,20 +23,8 @@ def env_wrapper(env):
         elif mode == 'human':
             self._get_viewer().render()
 
-    def _get_obs(self):
-        theta = self.sim.data.qpos.flat[:2]
-        return np.concatenate([
-            np.cos(theta),
-            np.sin(theta),
-            self.sim.data.qpos.flat[2:],
-            self.sim.data.qvel.flat[:2],
-            self.get_body_com("fingertip")
-        ])
-
     env.unwrapped.close = MethodType(close, env.unwrapped)
-    env.unwrapped.reset_model = MethodType(reset_model, env.unwrapped)
     env.unwrapped.render = MethodType(render, env.unwrapped)
-    env.unwrapped._get_obs = MethodType(_get_obs, env.unwrapped)
     return env
 
 

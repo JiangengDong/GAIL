@@ -10,6 +10,7 @@ from discriminator import Discriminator
 from generator import Generator
 from pid import PIDPolicy
 from util import (env_wrapper, logger)
+from envs.reacher import (reacher)
 
 
 def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
@@ -36,7 +37,8 @@ def cg(f_Ax, b, cg_iters=10, residual_tol=1e-10):
 
 
 class TRPO:
-    def __init__(self, env,
+    def __init__(self, generator_env,
+                 expert_env,
                  ent_coeff=0,
                  g_step=4,
                  d_step=1,
@@ -45,7 +47,8 @@ class TRPO:
                  lam=0.97,
                  max_kl=0.01,
                  cg_damping=0.1):
-        self.env = env
+        self.generator_env = generator_env
+        self.expert_env = expert_env
         self.ent_coeff = ent_coeff
         self.g_step = g_step
         self.d_step = d_step
@@ -54,7 +57,7 @@ class TRPO:
         self.lam = lam
         self.max_kl = max_kl
         self.cg_damping = cg_damping
-        self.build_net(env, ent_coeff, cg_damping)
+        self.build_net(generator_env, ent_coeff, cg_damping)
 
     def build_net(self, env, ent_coeff, cg_damping):
         # Build two policies. Optimize the performance of pi w.r.t oldpi in each step.
@@ -66,8 +69,8 @@ class TRPO:
         # Build discriminator.
         self.d = Discriminator(name="discriminator",
                                ob_shape=(4,),
-                               ac_shape=env.action_space.shape,
-                               ob_slice=[4, 5, 8, 9])
+                               st_shape=(6,),
+                               ob_slice=range(4))
 
         # KL divergence and entropy
         self.meanKl = tf.reduce_mean(self.oldpi.pd.kl(self.pi.pd))  # D_KL using Monte Carlo on a batch
@@ -142,19 +145,18 @@ class TRPO:
             assign = lambda: sess.run(self.assignNewToOld)
 
             def ob_proc(ob):
-                target = ob[4:6]
+                target = ob[:2]
                 r = sqrt(target[0] ** 2 + target[1] ** 2)
                 l1 = 0.1
                 l2 = 0.11
-                assert abs(l1 - l2) < r < l1 + l2
                 q_target = np.array([arctan2(target[1], target[0]) - arccos((r ** 2 + l1 ** 2 - l2 ** 2) / 2 / r / l1),
                                      PI - arccos((l1 ** 2 + l2 ** 2 - r ** 2) / 2 / l1 / l2)])
-                q = arctan2(ob[2:4], ob[0:2])
+                q = arctan2(ob[4:6], ob[6:8])
                 return np.mod(q_target - q + PI, 2 * PI) - PI
 
             # Build generator
-            expert = Generator(PIDPolicy(shape=(2,), ob_proc=ob_proc), self.env, self.d, 1000)
-            generator = Generator(self.pi, self.env, self.d, 1000)
+            expert = Generator(PIDPolicy(shape=(2,), ob_proc=ob_proc), self.expert_env, self.d, 1000)
+            generator = Generator(self.pi, self.generator_env, self.d, 1000)
 
             # Start training
             if glob.glob("./log/gail.ckpt.*"):
@@ -217,28 +219,25 @@ class TRPO:
                                         traj = generator.sample_trajectory()
                                         traj = generator.process_trajectory(traj, self.gamma, self.lam)
                                         obs, vtarg = traj["ob"], traj["tdlamret"]
-                                        self.pi.ob_rms.update(obs)
                                         self.pi.train_value_function(obs, vtarg)
                         with logger("train discriminator"):
                             for _ in range(self.d_step):
                                 traj_g = generator.sample_trajectory()
                                 traj_e = expert.sample_trajectory()
-                                self.d.obs_rms.update(np.concatenate([traj_e["ob"][:, [4, 5, 8, 9]],
-                                                                      traj_g["ob"][:, [4, 5, 8,9 ]]],
-                                                                     0))
-                                self.d.train(traj_g["ob"], traj_g["ac"], traj_e["ob"], traj_e["ac"])
+                                self.d.train(traj_g["ob"], traj_g["st"], traj_e["ob"], traj_e["st"])
 
     def test(self):
         with tf.Session() as sess:
             saver = tf.train.Saver()
             saver.restore(sess, "./log/gail.ckpt")
             writer = tf.summary.FileWriter("./log/graph", tf.get_default_graph())
-            generator = Generator(self.pi, self.env, self.d, 1000, "./record/test.mp4")
+            generator = Generator(self.pi, self.generator_env, self.d, 1000, "./record/test.mp4")
             generator.sample_trajectory(display=True, record=True)
             writer.close()
 
 
 if __name__ == '__main__':
-    env = env_wrapper(gym.make("Reacher-v2"))
-    trainer = TRPO(env)
+    generator_env = reacher(n_links=3)
+    expert_env = reacher(n_links=2)
+    trainer = TRPO(generator_env, expert_env)
     trainer.train(20)
