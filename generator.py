@@ -20,6 +20,7 @@ class Generator:
         reward = 0.0    # reward predicted by value function
         true_reward = 0.0   # reward calculated according to all rewards
         vpred = 0.0
+        st = np.zeros(self.reward_giver.st_shape, np.float32)
         ob = self.env.reset()
 
         if record:
@@ -37,6 +38,7 @@ class Generator:
         obs = np.array([ob for _ in range(self.n_step)])
         acs = np.array([ac for _ in range(self.n_step)])
         pre_acs = acs.copy()  # deep copy
+        sts = np.ndarray((self.n_step,)+self.reward_giver.st_shape, np.float32)
         true_rewards = np.zeros(self.n_step, np.float32)
         rewards = np.zeros(self.n_step, np.float32)
         vpreds = np.zeros(self.n_step, np.float32)
@@ -54,7 +56,8 @@ class Generator:
             vpreds[i] = vpred
             # evaluate values and record
             if self.reward_giver is not None:
-                reward = self.reward_giver.get_reward(ob, ac)
+                reward, st = self.reward_giver.get_reward(ob, st)
+                sts[i] = st
             else:
                 reward = 0
             rewards[i] = reward
@@ -67,6 +70,7 @@ class Generator:
             true_rewards[i] = true_reward
             if new:
                 ob = self.env.reset()
+                st = np.zeros(self.reward_giver.st_shape, np.float32)
 
         if display:
             self.env.close()
@@ -76,7 +80,8 @@ class Generator:
                 "ac": acs,
                 "pre_ac": pre_acs,
                 "new": news,
-                "nextvpred": vpred * (1 - new)}
+                "nextvpred": vpred * (1 - new),
+                "st": sts}
 
     @staticmethod
     def process_trajectory(traj, gamma, lam):
