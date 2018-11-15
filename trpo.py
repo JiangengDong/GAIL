@@ -239,4 +239,4 @@ class TRPO:
 if __name__ == '__main__':
     env = env_wrapper(gym.make("Reacher-v2"))
     trainer = TRPO(env)
-    trainer.test()
+    trainer.train(20)
