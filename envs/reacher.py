@@ -3,11 +3,16 @@ from gym.wrappers.time_limit import TimeLimit
 import numpy as np
 import glfw
 import mujoco_py
+import os
+import sys
 
 
 class Reacher3Link(mujoco_env.MujocoEnv):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/reacher_3link.xml", 2)
+        if sys.platform == "linux":
+            mujoco_env.MujocoEnv.__init__(self, os.path.abspath("./envs/assets/reacher_3link.xml"), 2)
+        elif sys.platform == "win32":
+            mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/reacher_3link.xml", 2)
 
     def step(self, a):
         self.do_simulation(a, self.frame_skip)
@@ -62,7 +67,10 @@ class Reacher3Link(mujoco_env.MujocoEnv):
 
 class Reacher2Link(mujoco_env.MujocoEnv):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/reacher_2link.xml", 2)
+        if sys.platform == "linux":
+            mujoco_env.MujocoEnv.__init__(self, os.path.abspath("./envs/assets/reacher_2link.xml"), 2)
+        elif sys.platform == "win32":
+            mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/reacher_2link.xml", 2)
 
     def step(self, a):
         self.do_simulation(a, self.frame_skip)
