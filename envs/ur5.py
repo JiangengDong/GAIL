@@ -1,10 +1,15 @@
 from gym.envs.mujoco import mujoco_env
 import numpy as np
+import os
+import sys
 
 
 class UR5(mujoco_env.MujocoEnv):
     def __init__(self):
-        mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/UR5gripper.xml", 2)
+        if sys.platform == "linux":
+            mujoco_env.MujocoEnv.__init__(self, os.path.abspath("./envs/assets/UR5gripper.xml"), 2)
+        elif sys.platform == "win32":
+            mujoco_env.MujocoEnv.__init__(self, "/File/LAB/project/envs/assets/UR5gripper.xml", 2)
 
     def step(self, a):
         # vec = self.get_body_com("fingertip")-self.get_body_com("target")
