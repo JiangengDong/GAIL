@@ -60,41 +60,42 @@ class TRPO:
         self.build_net(generator_env, ent_coeff, cg_damping)
 
     def build_net(self, env, ent_coeff, cg_damping):
-        # Build two policies. Optimize the performance of pi w.r.t oldpi in each step.
-        self.ob = tf.placeholder(dtype=tf.float32, shape=(None,) + env.observation_space.shape, name="ob")
-        self.pi = MultiLayerPolicy("pi", self.ob, env.action_space.shape)
-        self.oldpi = MultiLayerPolicy("oldpi", self.ob, env.action_space.shape)
-        self.assignNewToOld = [tf.assign(oldv, newv)
-                               for oldv, newv in zip(self.oldpi.get_variables(), self.pi.get_variables())]
-        # Build discriminator.
-        self.d = Discriminator(name="discriminator",
-                               ob_shape=(4,),
-                               st_shape=(6,),
-                               ob_slice=range(4))
+        with tf.device('/cpu:0'):
+            # Build two policies. Optimize the performance of pi w.r.t oldpi in each step.
+            self.ob = tf.placeholder(dtype=tf.float32, shape=(None,) + env.observation_space.shape, name="ob")
+            self.pi = MultiLayerPolicy("pi", self.ob, env.action_space.shape)
+            self.oldpi = MultiLayerPolicy("oldpi", self.ob, env.action_space.shape)
+            self.assignNewToOld = [tf.assign(oldv, newv)
+                                   for oldv, newv in zip(self.oldpi.get_variables(), self.pi.get_variables())]
+            # Build discriminator.
+            self.d = Discriminator(name="discriminator",
+                                   ob_shape=(4,),
+                                   st_shape=(6,),
+                                   ob_slice=range(4))
 
-        # KL divergence and entropy
-        self.meanKl = tf.reduce_mean(self.oldpi.pd.kl(self.pi.pd))  # D_KL using Monte Carlo on a batch
-        meanEnt = tf.reduce_mean(self.pi.pd.entropy())  # entropy using Monte Carlo on a batch
-        entBonus = ent_coeff * meanEnt
-        # surrogate gain, L(pi)=J(pi)-J(oldpi)=sum(p_new/p_old*adv)
-        self.ac = tf.placeholder(dtype=tf.float32, shape=(None,) + env.action_space.shape, name="ac")
-        self.atarg = tf.placeholder(dtype=tf.float32, shape=(None,),
-                                    name="advantage")  # advantage function for each action
-        ratio = tf.exp(self.pi.pd.logp(self.ac) - self.oldpi.pd.logp(self.ac))  # p_new/p_old
-        surrgain = tf.reduce_mean(ratio * self.atarg)  # J(pi)-J(oldpi)
-        self.optimgain = surrgain + entBonus
-        # fisher vector product
-        all_var_list = self.pi.get_trainable_variables()
-        policyVars = [v for v in all_var_list if v.name.startswith("pi/pol") or v.name.startswith("pi/logstd")]
-        self.vector = tf.placeholder(dtype=tf.float32, shape=(None,), name="vector")
-        self.fvp = self.build_fisher_vector_product(self.meanKl, self.vector, policyVars, cg_damping)
-        # loss and gradient
-        self.optimgrad = tf.gradients(self.optimgain, policyVars)
-        self.optimgrad = tf.concat([tf.reshape(g, [int(np.prod(g.shape))]) for g in self.optimgrad], axis=0)
-        # utils
-        self.init = tf.global_variables_initializer()
-        self.get_theta = tf.concat([tf.reshape(var, [int(np.prod(var.shape))]) for var in policyVars], axis=0)
-        self.set_theta = self.setFromTheta(policyVars)
+            # KL divergence and entropy
+            self.meanKl = tf.reduce_mean(self.oldpi.pd.kl(self.pi.pd))  # D_KL using Monte Carlo on a batch
+            meanEnt = tf.reduce_mean(self.pi.pd.entropy())  # entropy using Monte Carlo on a batch
+            entBonus = ent_coeff * meanEnt
+            # surrogate gain, L(pi)=J(pi)-J(oldpi)=sum(p_new/p_old*adv)
+            self.ac = tf.placeholder(dtype=tf.float32, shape=(None,) + env.action_space.shape, name="ac")
+            self.atarg = tf.placeholder(dtype=tf.float32, shape=(None,),
+                                        name="advantage")  # advantage function for each action
+            ratio = tf.exp(self.pi.pd.logp(self.ac) - self.oldpi.pd.logp(self.ac))  # p_new/p_old
+            surrgain = tf.reduce_mean(ratio * self.atarg)  # J(pi)-J(oldpi)
+            self.optimgain = surrgain + entBonus
+            # fisher vector product
+            all_var_list = self.pi.get_trainable_variables()
+            policyVars = [v for v in all_var_list if v.name.startswith("pi/pol") or v.name.startswith("pi/logstd")]
+            self.vector = tf.placeholder(dtype=tf.float32, shape=(None,), name="vector")
+            self.fvp = self.build_fisher_vector_product(self.meanKl, self.vector, policyVars, cg_damping)
+            # loss and gradient
+            self.optimgrad = tf.gradients(self.optimgain, policyVars)
+            self.optimgrad = tf.concat([tf.reshape(g, [int(np.prod(g.shape))]) for g in self.optimgrad], axis=0)
+            # utils
+            self.init = tf.global_variables_initializer()
+            self.get_theta = tf.concat([tf.reshape(var, [int(np.prod(var.shape))]) for var in policyVars], axis=0)
+            self.set_theta = self.setFromTheta(policyVars)
 
     def setFromTheta(self, var_list):
         # count the number of elements in var_list
