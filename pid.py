@@ -5,6 +5,7 @@ from typing import Tuple
 
 from util import env_wrapper
 from generator import Generator
+from envs.reacher import reacher
 
 
 class PIDPolicy:
@@ -26,35 +27,30 @@ class PIDPolicy:
         inc = e - self.e_pre
         self.e_pre = e
         self.sum += e
-        return self.p * e + self.i * self.sum + self.d * inc, 0
+        return (self.p * e + self.i * self.sum + self.d * inc), 0
 
     def __call__(self, stochastic, ob):
         return self.act(stochastic, ob)
 
 
 def main():
-    env = gym.make("Reacher-v2")
-    env = env_wrapper(env)
+    env = reacher(n_links=2)
 
-    def process_ob(ob):
-        target = ob[4:6]
+    def ob_proc(ob):
+        target = ob[:2]
         r = sqrt(target[0] ** 2 + target[1] ** 2)
         l1 = 0.1
         l2 = 0.11
-        assert abs(l1 - l2) < r < l1 + l2
         q_target = np.array([arctan2(target[1], target[0]) - arccos((r ** 2 + l1 ** 2 - l2 ** 2) / 2 / r / l1),
                              pi - arccos((l1 ** 2 + l2 ** 2 - r ** 2) / 2 / l1 / l2)])
-        q = arctan2(ob[2:4], ob[0:2])
+        q = arctan2(ob[6:8], ob[4:6])
         return np.mod(q_target - q + pi, 2 * pi) - pi
 
-    pol = PIDPolicy(shape=(2,), ob_proc=process_ob)
+    pol = PIDPolicy(shape=(2,), ob_proc=ob_proc)
 
     demo = Generator(pol, env, None, 1000, record_path="./record/demo.mp4")
-    traj = demo.sample_trajectory(display=True, record=True)
+    traj = demo.sample_trajectory(display=True, record=False)
     traj = demo.process_trajectory(traj, 0.995, 0.97)
-    # plt.plot(traj["adv"])
-    # plt.plot(traj["vpred"])
-    # plt.show()
     pass
 
 

@@ -3,6 +3,8 @@ import numpy as np
 import os
 import sys
 import glob
+import profile
+import pstats
 from numpy import (sqrt, arctan2, arccos)
 from numpy import pi as PI
 
@@ -152,12 +154,12 @@ class TRPO:
                 l2 = 0.11
                 q_target = np.array([arctan2(target[1], target[0]) - arccos((r ** 2 + l1 ** 2 - l2 ** 2) / 2 / r / l1),
                                      PI - arccos((l1 ** 2 + l2 ** 2 - r ** 2) / 2 / l1 / l2)])
-                q = arctan2(ob[4:6], ob[6:8])
+                q = arctan2(ob[6:8], ob[4:6])
                 return np.mod(q_target - q + PI, 2 * PI) - PI
 
             # Build generator
-            expert = Generator(PIDPolicy(shape=(2,), ob_proc=ob_proc), self.expert_env, self.d, 1000)
-            generator = Generator(self.pi, self.generator_env, self.d, 1000)
+            expert = Generator(PIDPolicy(shape=(2,), ob_proc=ob_proc), self.expert_env, self.d, 200)
+            generator = Generator(self.pi, self.generator_env, self.d, 200)
 
             # Start training
             if glob.glob("./log/gail.ckpt.*"):
@@ -243,4 +245,7 @@ if __name__ == '__main__':
     generator_env = reacher(n_links=3)
     expert_env = reacher(n_links=2)
     trainer = TRPO(generator_env, expert_env)
-    trainer.train(20)
+    trainer.train(1000)
+    # profile.run("trainer.train(1)", "log/prof.txt")
+    # p = pstats.Stats("log/prof.txt")
+    # p.sort_stats("time").print_stats()

@@ -1,5 +1,6 @@
 from gym.envs.mujoco import mujoco_env
 from gym.wrappers.time_limit import TimeLimit
+from gym.wrappers.monitoring.video_recorder import VideoRecorder
 import numpy as np
 import glfw
 import mujoco_py
@@ -136,9 +137,10 @@ def reacher(n_links=2):
 
 if __name__ == '__main__':
     env = reacher(3)
+    rec = VideoRecorder(env, path="./example/reacher-2link.mp4")
     env.reset()
     for _ in range(50):
         env.render()
-        ob, _, done, _ = env.step(np.array([1e-3, 1e-3, 1e-3]))
-        print(done)
+        ob, _, done, _ = env.step(np.array([5e-2, 5e-2, 5e-2]))
+        rec.capture_frame()
     env.close()
