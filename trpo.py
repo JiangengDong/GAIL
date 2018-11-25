@@ -143,8 +143,9 @@ class TRPO:
             get_kl = lambda ob, ac, adv: sess.run(self.meanKl,
                                                   {self.ob: ob, self.ac: ac, self.atarg: adv})
             saver = tf.train.Saver()
-            save_var = lambda path="./log/gail.ckpt": saver.save(sess, path)
-            load_var = lambda path="./log/gail.ckpt": saver.restore(sess, path)
+            os.makedirs("../data/model_data", exist_ok=True)
+            save_var = lambda path="../data/model_data/gail.ckpt": saver.save(sess, path)
+            load_var = lambda path="../data/model_data/gail.ckpt": saver.restore(sess, path)
             assign = lambda: sess.run(self.assignNewToOld)
 
             def ob_proc(ob):
@@ -162,7 +163,7 @@ class TRPO:
             generator = Generator(self.pi, self.generator_env, self.d, 200)
 
             # Start training
-            if glob.glob("./log/gail.ckpt.*"):
+            if glob.glob("../data/model_data/gail.ckpt.*"):
                 with logger("load last trained data"):
                     load_var()
             else:
@@ -230,22 +231,28 @@ class TRPO:
                                 self.d.train(traj_g["ob"], traj_g["st"], traj_e["ob"], traj_e["st"])
 
     def test(self):
-        with tf.Session() as sess:
-            saver = tf.train.Saver()
-            saver.restore(sess, "./log/gail.ckpt")
-            writer = tf.summary.FileWriter("./log/graph", tf.get_default_graph())
-            generator = Generator(self.pi, self.generator_env, self.d, 1000, "./record/test.mp4")
-            generator.sample_trajectory(display=True, record=True)
-            writer.close()
+        if os.path.exists("../data/model_data/gail.ckpt"):
+            os.makedirs("../data/tensorboard/graph", exist_ok=True)
+            os.makedirs("../data/video",exist_ok=True)
+            with tf.Session() as sess:
+                saver = tf.train.Saver()
+                saver.restore(sess, "../data/model_data/gail.ckpt")
+                writer = tf.summary.FileWriter("../data/tensorboard/graph", tf.get_default_graph())
+                generator = Generator(self.pi, self.generator_env, self.d, 1000, "../data/video/test_2000.mp4")
+                generator.sample_trajectory(display=True, record=True)
+                writer.close()
+        else:
+            print("no model available")
 
 
 if __name__ == '__main__':
     if sys.platform == "linux":
         os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
     generator_env = reacher(n_links=3)
     expert_env = reacher(n_links=2)
     trainer = TRPO(generator_env, expert_env)
-    trainer.train(1000)
+    trainer.test()
     # profile.run("trainer.train(1)", "log/prof.txt")
     # p = pstats.Stats("log/prof.txt")
     # p.sort_stats("time").print_stats()

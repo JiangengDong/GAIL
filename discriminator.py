@@ -10,19 +10,18 @@ def logit_bernoulli_entropy(logits):
 
 
 class Discriminator:
-    def __init__(self, name, ob_shape, st_shape=(4,), hid_size=128, ent_coff=0.001, ob_slice=None):
+    def __init__(self, name, ob_shape, st_shape=None, hid_size=128, ent_coff=0.001, ob_slice=None):
         with tf.variable_scope(name):
             self.scope = tf.get_variable_scope().name
+            self.ob_shape = ob_shape
             self.st_shape = st_shape
+            self.hid_size = hid_size
             self.build_net(ob_shape, st_shape, hid_size, ent_coff)
-            if ob_slice is not None:
-                assert len(ob_slice) == ob_shape[0]
-                self.ob_slice = ob_slice
-            else:
-                self.ob_slice = range(ob_shape)
-            if not os.path.exists("./log/discriminator"):
-                os.mkdir("./log/discriminator")
-            self.writer = tf.summary.FileWriter("./log/discriminator")
+            self.ob_slice = ob_slice if ob_slice is not None else range(ob_shape[0])
+            assert len(self.ob_slice) == self.ob_shape[0]
+
+            os.makedirs("../data/graph/discriminator", exist_ok=True)
+            self.writer = tf.summary.FileWriter("../data/graph/discriminator")
 
     def build_net(self, ob_shape, st_shape, hid_size, ent_coeff):
         # build placeholders
